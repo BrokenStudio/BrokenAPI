@@ -32,8 +32,9 @@ public class LanguageAPI {
                 languages.get(rs.getInt("lang_id")).add(rs.getString("lang_key"),
                         rs.getString("lang_text"));
             }
-        }catch (SQLException ignored){}
-        finally {
+        }catch (SQLException ignored){
+          ignored.printStackTrace();
+        } finally {
             try {
                 rs.close();
                 con.close();

@@ -72,7 +72,7 @@ public class LocationAPI {
                 sets.put(rs.getString("loc_name"), set);
             }
         }catch (SQLException ignored){
-
+            ignored.printStackTrace();
         }finally {
             try {
                 rs.close();
@@ -97,7 +97,8 @@ public class LocationAPI {
         return locations.get(name);
     }
 
-    public void set(String name, Location location){
+    public void set(String set, String name, Location location){
+        sets.put(name, set);
         locations.put(name, location);
     }
 

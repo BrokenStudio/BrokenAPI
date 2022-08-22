@@ -39,8 +39,9 @@ public class BrokenAPI {
     }
 
     private void initializeDatabaseHandler(){
+        File folder = new File("plugins/BrokenAPI");
         File file = new File("plugins/BrokenAPI", "sql.json");
-        file.mkdirs();
+        folder.mkdir();
         try {
             if(file.createNewFile()){
                 System.err.println("No database credentials supplied to the software.");
@@ -55,7 +56,7 @@ public class BrokenAPI {
             this.databaseHandler = new DatabaseHandler(credentials);
             reader.close();
         }catch (IOException e){
-
+            e.printStackTrace();
         }
     }
 

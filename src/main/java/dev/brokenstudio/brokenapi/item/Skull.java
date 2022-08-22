@@ -14,6 +14,7 @@ import org.bukkit.Material;
 import org.bukkit.SkullType;
 import org.bukkit.block.Block;
 import org.bukkit.craftbukkit.v1_19_R1.CraftWorld;
+import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
 import org.bukkit.inventory.meta.SkullMeta;
@@ -102,10 +103,10 @@ public enum Skull
         return urlString;
     }
 
-    public static ItemStack getPlayerSkull(String name) {
-        ItemStack itemStack = new ItemStack(Material.LEGACY_SKULL_ITEM, 1, (short)3);
+    public static ItemStack getPlayerSkull(Player player) {
+        ItemStack itemStack = new ItemStack(Material.PLAYER_HEAD);
         SkullMeta meta = (SkullMeta)itemStack.getItemMeta();
-        meta.setOwner(name);
+        meta.setOwnerProfile(player.getPlayerProfile());
         itemStack.setItemMeta(meta);
         return itemStack;
     }
