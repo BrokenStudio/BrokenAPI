@@ -13,6 +13,6 @@ public class SpigotBootstrapper extends JavaPlugin {
 
     @Override
     public void onDisable() {
-        BrokenAPI.api().getLocationAPI().save();
+        BrokenAPI.api().getLocationAPI().saveSync();
     }
 }

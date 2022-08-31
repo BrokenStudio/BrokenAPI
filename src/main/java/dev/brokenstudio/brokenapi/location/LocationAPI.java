@@ -85,12 +85,26 @@ public class LocationAPI {
         CompletableFuture.runAsync(() -> {
             SQLPipe pipe = new SQLPipe();
             locations.forEach((name, location) -> {
+                System.out.printf(name);
                 pipe.addQuery("INSERT INTO `api_loc` (`loc_name`,`loc_set`,`loc_data`) VALUES " +
                         "('"+name+"','"+sets.get(name)+"','"+Serializer.serialize(new JsonLocation(location))+"')" +
                         " ON DUPLICATE KEY UPDATE `loc_data`='"+Serializer.serialize(new JsonLocation(location))+"';");
             });
             BrokenAPI.api().getDatabaseHandler().getMariaDBHandler().executePipe(pipe);
         });
+    }
+
+    public void saveSync(){
+        //TEMP
+        Bukkit.getLogger().info("Saving Sync");
+        SQLPipe pipe = new SQLPipe();
+        locations.forEach((name, location) -> {
+            Bukkit.getLogger().info(name);
+            pipe.addQuery("INSERT INTO `api_loc` (`loc_name`,`loc_set`,`loc_data`) VALUES " +
+                    "('"+name+"','"+sets.get(name)+"','"+Serializer.serialize(new JsonLocation(location))+"')" +
+                    " ON DUPLICATE KEY UPDATE `loc_data`='"+Serializer.serialize(new JsonLocation(location))+"';");
+        });
+        BrokenAPI.api().getDatabaseHandler().getMariaDBHandler().executePipe(pipe);
     }
 
     public Location get(String name){

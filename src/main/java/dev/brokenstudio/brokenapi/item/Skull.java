@@ -1,4 +1,4 @@
-package dev.brokenstudio.pinklib.item;
+package dev.brokenstudio.brokenapi.item;
 
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
@@ -137,7 +137,7 @@ public enum Skull
 
 
     public ItemStack getSkull() {
-        ItemStack itemStack = new ItemStack(Material.LEGACY_SKULL, 1, (short)3);
+        ItemStack itemStack = new ItemStack(Material.PLAYER_HEAD);
         SkullMeta meta = (SkullMeta)itemStack.getItemMeta();
         meta.setOwner(this.id);
         itemStack.setItemMeta(meta);

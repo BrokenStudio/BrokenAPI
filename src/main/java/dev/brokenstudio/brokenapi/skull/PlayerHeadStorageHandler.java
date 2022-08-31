@@ -1,9 +1,10 @@
 package dev.brokenstudio.brokenapi.skull;
 
+import dev.brokenstudio.brokenapi.item.Skull;
+
 import java.io.IOException;
 import java.util.HashMap;
 import java.util.UUID;
-import dev.brokenstudio.pinklib.item.Skull;
 
 public class PlayerHeadStorageHandler {
 

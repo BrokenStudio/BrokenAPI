@@ -91,7 +91,13 @@ public class BrokenBoard {
         BrokenPlayer brokenPlayer = useBrokenPlayer ? BrokenAPI.api().getBrokenPlayerHandler().getBrokenPlayer(player.getUniqueId()) : null;
         int score = actions.size();
         for(int i = 0; i < actions.size(); i++){
-            Team team = scoreboard.registerNewTeam("sidebar" + i);
+            Team team;
+            if(scoreboard.getTeam("sidebar" + i) != null){
+                team = scoreboard.getTeam("sidebar" + i);
+                team.getEntries().clear();
+            }else{
+                team = scoreboard.registerNewTeam("sidebar" + i);
+            }
             AtomicReference<String> reference = new AtomicReference<>();
             actions.get(i).accept(player, brokenPlayer, reference);
             team.setPrefix(reference.get());
